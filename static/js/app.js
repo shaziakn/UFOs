@@ -40,30 +40,40 @@ function updateFilters() {
     // If a filter value was entered then add that filterId and value
     // to the filters list. Otherwise, clear that filter from the filters object
 
-    if (date) {
-        filteredData = filteredData.filter(row => row.datetime === date);
-    };
-    if (city) {
-        filteredData = filteredData.filter(row => row.city === city);
-    };
-    if (state) {
-        filteredData = filteredData.filter(row => row.state === state);
-    };
-    if (country) {
-        filteredData = filteredData.filter(row => row.country === country);
-    };
-    if (shape) {
-        filteredData = filteredData.filter(row => row.shape === shape);
-    };
+    filters = {date, city, state, country, shape};
 
     // Call function to apply all filters and rebuild the table
-    filterTable();
+    filterTable(filters);
   }
   
   function filterTable() {
   
     // Set the filteredData to the tableData
     let filteredData = tableData;
+
+    date = filters['date']
+    city = filters['city']
+    state = filters['state']
+    country = filters['country']
+    shape = filters['shape']
+
+    if (date) {
+      filteredData = filteredData.filter(row => row.datetime === date);
+    };
+    if (city) {
+      filteredData = filteredData.filter(row => row.city === city);
+    };
+    if (state) {
+      filteredData = filteredData.filter(row => row.state === state);
+    };
+    if (country) {
+      filteredData = filteredData.filter(row => row.country === country);
+    };
+    if (shape) {
+      filteredData = filteredData.filter(row => row.shape === shape);
+    };
+
+
     // Loop through all of the filters and keep any data that
     // matches the filter values
     function listLoop(filteredData) {
